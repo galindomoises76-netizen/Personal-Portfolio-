@@ -208,11 +208,11 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe elements for fade-in animation
-const animateElements = document.querySelectorAll('.project-card, .skill-category, .stat-item');
+const animateElements = document.querySelectorAll('.project-card, .stat-item, .icon-item');
 animateElements.forEach(el => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    el.style.transform = 'translateY(10px)';
+    el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
     observer.observe(el);
 });
 
