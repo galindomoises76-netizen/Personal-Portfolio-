@@ -1,16 +1,17 @@
 steps:
-  # Build the container image with verbose output
+  # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
     args: 
       - 'build'
-      - '--no-cache'
       - '-t'
       - 'gcr.io/$PROJECT_ID/portfolio:$SHORT_SHA'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/portfolio:latest'
       - '.'
   
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/portfolio:$SHORT_SHA']
+    args: ['push', '--all-tags', 'gcr.io/$PROJECT_ID/portfolio']
   
   # Deploy container image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -30,4 +31,5 @@ steps:
 
 images:
   - 'gcr.io/$PROJECT_ID/portfolio:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/portfolio:latest'
 
