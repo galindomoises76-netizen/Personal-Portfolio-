@@ -10,12 +10,8 @@ COPY package.json ./
 # Install dependencies
 RUN npm install --production --no-audit --no-fund
 
-# Copy application files explicitly
-COPY server.js ./
-COPY index.html ./
-COPY styles.css ./
-COPY script.js ./
-COPY moises-photo.jpg ./
+# Copy all application files (excluding .dockerignore patterns)
+COPY . .
 
 # Expose port 8080 (Cloud Run default)
 EXPOSE 8080
