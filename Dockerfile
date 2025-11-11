@@ -7,11 +7,15 @@ WORKDIR /app
 # Copy package.json first for better caching
 COPY package.json ./
 
-# Install dependencies (use --legacy-peer-deps if needed)
+# Install dependencies
 RUN npm install --production --no-audit --no-fund
 
-# Copy the entire project into the container
-COPY . .
+# Copy application files explicitly
+COPY server.js ./
+COPY index.html ./
+COPY styles.css ./
+COPY script.js ./
+COPY moises-photo.jpg ./
 
 # Expose port 8080 (Cloud Run default)
 EXPOSE 8080
