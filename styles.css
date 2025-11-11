@@ -509,6 +509,12 @@ body {
     height: 28px;
 }
 
+/* ===== Skills Section ===== */
+.skills {
+    padding: 100px 0;
+    background: transparent;
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
